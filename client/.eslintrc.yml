@@ -1,0 +1,38 @@
+---
+parser: babel-eslint
+
+# See these for deviations from Airbnb for eslint-config-shakacode
+# https://github.com/shakacode/style-guide-javascript/blob/master/packages/eslint-config-shakacode/rules/javascript.yml
+# https://github.com/shakacode/style-guide-javascript/blob/master/packages/eslint-config-shakacode/rules/react.yml
+extends: eslint-config-shakacode
+
+plugins:
+  - react
+
+globals:
+  __DEBUG_SERVER_ERRORS__: true
+  __SERVER_ERRORS__: true
+
+env:
+  browser: true
+  node: true
+  mocha: true
+
+# You would put your overrides here
+# rules:
+
+# Instructions:
+# Add these lines to your package.json, devDependencies:
+#   "eslint": "^3.16.1",
+#   "eslint-config-shakacode": "^14.1.1",
+#   "eslint-plugin-import": "^2.2.0",
+#   "eslint-plugin-jsx-a11y": "^4.0.0",
+#   "eslint-plugin-react": "^6.10.0",
+#
+# After that, consider updating the versions to the latest with yarn upgrade
+#
+# Add this line to the scripts section of your package.json:
+#   "lint": "eslint --ext .js,.jsx ."
+#
+# Run the linter with autofixer:
+# yarn run lint -- --fix
