@@ -9,6 +9,7 @@
 * [PR #1](https://github.com/shakacode/react_on_rails-update-webpack-v2/pull/1): See React on Rails 6.6.0 (my developer copy) running on top of Rails 5.1. This PR is from running `rails generate react_on_rails:install --redux`.
 * [PR #2](https://github.com/shakacode/react_on_rails-update-webpack-v2/pull/2): Upgrade the default installer to user Webpack v2. 
 * [PR #3](https://github.com/shakacode/react_on_rails-update-webpack-v2/pull/3): Add current eslint-config-shakacode. 
+* Check if we needed [React on Rails PR 730: Default to using `--bail` with webpack scripts](https://github.com/shakacode/react_on_rails/pull/730). It turns out that the issue with needing `--bail` is limited to Webpack v1.
 
 ## Running the code
 * Be sure to change the Gemfile to the version of React on Rails that wish to use.
