@@ -6,9 +6,9 @@
 * [Rails 5.1.0.beta1 Announcement](http://weblog.rubyonrails.org/2017/2/23/Rails-5-1-beta1/)
 
 ## Objectives
-* See React on Rails 6.6.0 (my developer copy) running on top of Rails 5.1. [PR #1](https://github.com/shakacode/react_on_rails-update-webpack-v2/pull/1) shows running `rails generate react_on_rails:install --redux` on top of Rails 5.1.
-* Upgrade the default installer to user Webpack v2. [PR #2](https://github.com/shakacode/react_on_rails-update-webpack-v2/pull/2)
-* Add current eslint-config-shakacode. [PR #3](https://github.com/shakacode/react_on_rails-update-webpack-v2/pull/3)
+* [PR #1](https://github.com/shakacode/react_on_rails-update-webpack-v2/pull/1): See React on Rails 6.6.0 (my developer copy) running on top of Rails 5.1. This PR is from running `rails generate react_on_rails:install --redux`.
+* [PR #2](https://github.com/shakacode/react_on_rails-update-webpack-v2/pull/2): Upgrade the default installer to user Webpack v2. 
+* [PR #3](https://github.com/shakacode/react_on_rails-update-webpack-v2/pull/3): Add current eslint-config-shakacode. 
 
 ## Running the code
 * Be sure to change the Gemfile to the version of React on Rails that wish to use.
