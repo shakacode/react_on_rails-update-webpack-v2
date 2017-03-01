@@ -1,12 +1,10 @@
 /* eslint comma-dangle: ["error",
-  {"functions": "never", "arrays": "only-multiline", "objects":
-"only-multiline"} ] */
+ {"functions": "never", "arrays": "only-multiline", "objects":
+ "only-multiline"} ] */
 
 const webpack = require('webpack');
-const path = require('path');
 
 const devBuild = process.env.NODE_ENV !== 'production';
-const nodeEnv = devBuild ? 'development' : 'production';
 
 const config = {
   entry: [
@@ -22,28 +20,35 @@ const config = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    alias: {
-      react: path.resolve('./node_modules/react'),
-      'react-dom': path.resolve('./node_modules/react-dom'),
-    },
+    // https://webpack.js.org/guides/migrating/#resolve-extensions
+    extensions: ['.js', '.jsx'],
+
+    // Remove alias as this was needed when we had nested node_modules sub-dependencies
+    // alias: {
+    //   react: path.resolve('./node_modules/react'),
+    //   'react-dom': path.resolve('./node_modules/react-dom'),
+    // },
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(nodeEnv),
-      },
-    }),
+    // https://webpack.js.org/plugins/environment-plugin
+    new webpack.EnvironmentPlugin({ NODE_ENV: 'development' }),
   ],
   module: {
-    loaders: [
+    // https://webpack.js.org/guides/migrating/#module-loaders-is-now-module-rules
+    rules: [
       {
         test: require.resolve('react'),
-        loader: 'imports?shim=es5-shim/es5-shim&sham=es5-shim/es5-sham',
+        use: {
+          loader: 'imports-loader',
+          options: {
+            shim: 'es5-shim/es5-shim',
+            sham: 'es5-shim/es5-sham',
+          }
+        },
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
+        use: 'babel-loader',
         exclude: /node_modules/,
       },
     ],
@@ -54,10 +59,8 @@ module.exports = config;
 
 if (devBuild) {
   console.log('Webpack dev build for Rails'); // eslint-disable-line no-console
+  // https://webpack.js.org/configuration/devtool/#devtool
   module.exports.devtool = 'eval-source-map';
 } else {
-  config.plugins.push(
-    new webpack.optimize.DedupePlugin()
-  );
   console.log('Webpack production build for Rails'); // eslint-disable-line no-console
 }
